@@ -1,0 +1,5 @@
+.DS_Store
+.vscode
+build/
+proxy_requests.log
+Makefile
