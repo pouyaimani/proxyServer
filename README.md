@@ -21,7 +21,12 @@ A lightweight multi-process HTTP proxy server written in C, designed for basic r
 ## Build Instructions
 
 ```bash
-gcc -o proxy proxy.c
+mkdir build && cd build
+cmake ..
+cmake --build .
+```
+
+Requires GNU/Linux environment and GCC.
 ```
 
 Requires GNU/Linux environment.
@@ -31,7 +36,8 @@ Requires GNU/Linux environment.
 ## Run Example
 
 ```bash
-./proxy --inbound 127.0.0.1:8080 --outbound 93.184.216.34
+cd build
+./proxy_server --inbound 127.0.0.1:8080 --outbound 93.184.216.34
 ```
 
 - `--inbound`: IP and port to bind the proxy server
@@ -66,8 +72,17 @@ IP: 127.0.0.1, Timestamp: Sat Jun 11 13:45:20 2025, PID: 12345
 ## Project Structure
 
 ```
-proxy.c            # Main source file
-proxy_requests.log # Appended log file
+proxy_server_modular/
+├── CMakeLists.txt
+├── include/
+│   ├── logger.h
+│   ├── request_handler.h
+│   └── signal_handler.h
+├── src/
+│   ├── logger.c
+│   ├── main.c
+│   ├── request_handler.c
+│   └── signal_handler.c
 ```
 
 ---

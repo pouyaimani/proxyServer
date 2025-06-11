@@ -9,10 +9,12 @@ set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
 # Specify the source file
-set(SOURCE_FILE proxy_server.c)
+set(SOURCE_FILE src/main.c src/logger.c src/signal_handler.c src/request_handler.c)
 
 # Add the executable target
 add_executable(proxy_server ${SOURCE_FILE})
+
+target_include_directories(proxy_server PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
 # Add CPU-specific GCC flags
 if(CMAKE_C_COMPILER_ID STREQUAL "GNU")
